@@ -27,6 +27,11 @@
         #mobile-menu { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease; }
         .mobile-menu-closed { transform: translateY(-100%); opacity: 0; pointer-events: none; }
         .mobile-menu-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+
+        /* 语言切换按钮样式 */
+        .lang-active { color: #1B65D4; font-weight: 700; }
+        .lang-inactive { color: #9CA3AF; font-weight: 400; cursor: pointer; }
+        .lang-inactive:hover { color: #000; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-black antialiased">
@@ -42,19 +47,19 @@
             <!-- 桌面端菜单 -->
             <nav class="hidden lg:flex space-x-10 text-sm font-medium tracking-wide text-gray-800">
                 <a href="index.html#products" class="hover:text-tech-blue transition-colors relative group">
-                    <span>产品系列</span>
+                    <span data-i18n="nav_products">产品系列</span>
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
                 </a>
                 <a href="lighting-solutions.html" class="hover:text-tech-blue transition-colors relative group">
-                    <span>技术方案</span>
+                    <span data-i18n="nav_solutions">技术方案</span>
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
                 </a>
                 <a href="brand-story.html" class="hover:text-tech-blue transition-colors relative group">
-                    <span>品牌故事</span>
+                    <span data-i18n="nav_story">品牌故事</span>
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
                 </a>
                 <a href="service-support.html" class="hover:text-tech-blue transition-colors relative group">
-                    <span>服务支持</span>
+                    <span data-i18n="nav_support">服务支持</span>
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
                 </a>
             </nav>
@@ -89,20 +94,20 @@
     <!-- 移动端全屏菜单 -->
     <div id="mobile-menu" class="fixed inset-0 bg-white z-40 mobile-menu-closed flex flex-col justify-center items-center pt-20">
         <nav class="flex flex-col space-y-8 text-center text-2xl font-bold text-gray-900">
-            <a href="index.html#products" class="mobile-link hover:text-tech-blue">产品系列</a>
-            <a href="lighting-solutions.html" class="mobile-link hover:text-tech-blue">技术方案</a>
-            <a href="brand-story.html" class="mobile-link hover:text-tech-blue">品牌故事</a>
-            <a href="service-support.html" class="mobile-link hover:text-tech-blue">服务支持</a>
+            <a href="index.html#products" class="mobile-link hover:text-tech-blue" data-i18n="mobile_nav_products">产品系列</a>
+            <a href="lighting-solutions.html" class="mobile-link hover:text-tech-blue" data-i18n="mobile_nav_solutions">技术方案</a>
+            <a href="brand-story.html" class="mobile-link hover:text-tech-blue" data-i18n="mobile_nav_story">品牌故事</a>
+            <a href="service-support.html" class="mobile-link hover:text-tech-blue" data-i18n="mobile_nav_support">服务支持</a>
             <hr class="border-gray-100 w-20 mx-auto my-4">
             <!-- 移动端京东链接 -->
-            <a href="https://jd.com" target="_blank" class="jd-link text-base font-medium text-white bg-black px-6 py-2 rounded-full">
+            <a href="https://jd.com" target="_blank" class="jd-link text-base font-medium text-white bg-black px-6 py-2 rounded-full" data-i18n="mobile_jd_link">
                 前往京东旗舰店
             </a>
             <!-- 移动端语言切换 -->
             <div class="flex space-x-4 text-sm pt-4">
-                <span onclick="setLanguage('en')" class="cursor-pointer hover:text-tech-blue">English</span>
+                <span id="mobile-lang-en" onclick="setLanguage('en')" class="cursor-pointer hover:text-tech-blue">English</span>
                 <span class="text-gray-300">|</span>
-                <span onclick="setLanguage('cn')" class="cursor-pointer hover:text-tech-blue">中文</span>
+                <span id="mobile-lang-cn" onclick="setLanguage('cn')" class="cursor-pointer hover:text-tech-blue">中文</span>
             </div>
         </nav>
     </div>
@@ -115,14 +120,14 @@
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
                         <nav class="text-xs text-gray-400 mb-1">
-                            <a href="index.html" class="hover:text-tech-blue">首页</a>
+                            <a href="index.html" class="hover:text-tech-blue" data-i18n="breadcrumb_home">首页</a>
                             <span class="mx-1.5">/</span>
-                            <span>服务与支持</span>
+                            <span data-i18n="breadcrumb_support">服务与支持</span>
                         </nav>
-                        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-2">
+                        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-2" data-i18n="hero_title">
                             服务与支持
                         </h1>
-                        <p class="text-sm md:text-base text-gray-500 max-w-2xl">
+                        <p class="text-sm md:text-base text-gray-500 max-w-2xl" data-i18n="hero_subtitle">
                             无论你正在使用 Prorito 灯具、控制系统还是软件工具，我们都希望你可以方便地获得帮助：
                             在线支持、驱动与固件下载、移动应用，以及寄修服务信息都集中在这里。
                         </p>
@@ -141,20 +146,20 @@
                 <!-- 在线支持 -->
                 <section class="lg:col-span-2 bg-white rounded-2xl border border-gray-100 p-6 md:p-7 shadow-sm">
                     <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-lg md:text-xl font-semibold">在线支持</h2>
-                        <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[11px] font-semibold">
+                        <h2 class="text-lg md:text-xl font-semibold" data-i18n="online_support_title">在线支持</h2>
+                        <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[11px] font-semibold" data-i18n="recommended_method">
                             推荐优先方式
                         </span>
                     </div>
-                    <p class="text-xs md:text-sm text-gray-600 mb-4">
+                    <p class="text-xs md:text-sm text-gray-600 mb-4" data-i18n="online_support_desc">
                         如果你在使用产品过程中遇到任何问题（例如：灯具异常、控制系统配置、固件升级、方案咨询等），
                         建议优先通过在线支持渠道联系我们，方便我们记录和追踪问题进度。
                     </p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
                         <div class="rounded-xl bg-gray-50 border border-gray-100 p-4 flex flex-col">
-                            <h3 class="font-semibold mb-1.5">提交服务工单</h3>
-                            <p class="text-gray-600 mb-3">
+                            <h3 class="font-semibold mb-1.5" data-i18n="submit_ticket_title">提交服务工单</h3>
+                            <p class="text-gray-600 mb-3" data-i18n="submit_ticket_desc">
                                 适用于需要跟进记录的问题，例如：设备维修、方案咨询、项目配置等。
                             </p>
                             <ul class="text-gray-500 text-[11px] space-y-1 mb-3">
@@ -162,8 +167,7 @@
                                 <li>· 可查看工单处理进度与历史记录</li>
                                 <li>· 适合工程项目与商用客户</li>
                             </ul>
-                            <a href="#"
-                               class="mt-auto inline-flex items-center justify-center px-3 py-2 rounded-full bg-black text-white text-[12px] font-semibold hover:bg-tech-blue transition-colors">
+                            <a href="#" class="mt-auto inline-flex items-center justify-center px-3 py-2 rounded-full bg-black text-white text-[12px] font-semibold hover:bg-tech-blue transition-colors" data-i18n="submit_ticket_button">
                                 提交工单
                                 <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -172,7 +176,7 @@
                         </div>
 
                         <div class="rounded-xl bg-gray-50 border border-gray-100 p-4 flex flex-col">
-                            <h3 class="font-semibold mb-1.5">邮件 / 即时沟通</h3>
+                            <h3 class="font-semibold mb-1.5" data-i18n="email_communication_title">邮件 / 即时沟通</h3>
                             <ul class="text-gray-500 text-[11px] space-y-1 mb-3">
                                 <li>· 邮箱：<a href="mailto:support@prorito.com" class="text-tech-blue hover:underline">support@prorito.com</a></li>
                                 <li>· 工作时间：周一至周五 09:30–18:30（工作日）</li>
@@ -189,8 +193,8 @@
 
                 <!-- 小提示 -->
                 <aside class="bg-gray-900 text-gray-100 rounded-2xl p-5 md:p-6 flex flex-col">
-                    <h3 class="text-sm md:text-base font-semibold mb-2">加快问题定位的小提示</h3>
-                    <p class="text-[11px] md:text-xs text-gray-300 mb-3">
+                    <h3 class="text-sm md:text-base font-semibold mb-2" data-i18n="problem_tips_title">加快问题定位的小提示</h3>
+                    <p class="text-[11px] md:text-xs text-gray-300 mb-3" data-i18n="problem_tips_desc">
                         在提交工单或邮件时，如果可以提供以下信息，将帮助我们更快定位并解决问题：
                     </p>
                     <ul class="text-[11px] md:text-xs text-gray-300 space-y-2">
@@ -455,23 +459,23 @@
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-black mb-4">产品系列</h4>
+                    <h4 class="font-bold text-black mb-4" data-i18n="footer_products">产品系列</h4>
                     <ul class="space-y-3">
-                        <li><a href="category.html?category=studio" class="hover:text-tech-blue transition-colors">演播室灯光</a></li>
-                        <li><a href="category.html?category=st" class="hover:text-tech-blue transition-colors">ST系列影视灯</a></li>
-                        <li><a href="category.html?category=p" class="hover:text-tech-blue transition-colors">P系列全彩灯</a></li>
-                        <li><a href="category.html?category=control" class="hover:text-tech-blue transition-colors">控制与配件</a></li>
+                        <li><a href="category.html?category=studio" class="hover:text-tech-blue transition-colors" data-i18n="cat_studio_lighting">演播室灯光</a></li>
+                        <li><a href="category.html?category=st" class="hover:text-tech-blue transition-colors" data-i18n="cat_st_series">ST系列影视灯</a></li>
+                        <li><a href="category.html?category=p" class="hover:text-tech-blue transition-colors" data-i18n="cat_p_series">P系列全彩灯</a></li>
+                        <li><a href="category.html?category=control" class="hover:text-tech-blue transition-colors" data-i18n="cat_control_accessories">控制与配件</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-black mb-4">技术方案</h4>
+                    <h4 class="font-bold text-black mb-4" data-i18n="footer_solutions">技术方案</h4>
                     <ul class="space-y-3">
-                        <li><a href="lighting-solutions.html" class="hover:text-tech-blue transition-colors">典型案例</a></li>
-                        <li><a href="lighting-solutions.html" class="hover:text-tech-blue transition-colors">标准化布光模板</a></li>
+                        <li><a href="lighting-solutions.html" class="hover:text-tech-blue transition-colors" data-i18n="footer_case_studies">典型案例</a></li>
+                        <li><a href="lighting-solutions.html" class="hover:text-tech-blue transition-colors" data-i18n="footer_lighting_templates">标准化布光模板</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-black mb-4">关注我们</h4>
+                    <h4 class="font-bold text-black mb-4" data-i18n="footer_follow_us">关注我们</h4>
                     <div class="flex space-x-4">
                         <a href="https://weixin.qq.com" target="_blank" class="w-8 h-8 bg-gray-100 flex items-center justify-center rounded-full hover:bg-green-500">
                             <img src="image/微信.png" alt="微信" class="w-4 h-4">
@@ -522,6 +526,20 @@
             
             // 更新页面内容语言
             updateContentLanguage(lang);
+            
+            // 更新移动端语言切换按钮样式
+            const mobileBtnEn = document.getElementById('mobile-lang-en');
+            const mobileBtnCn = document.getElementById('mobile-lang-cn');
+            
+            if (mobileBtnEn && mobileBtnCn) {
+                if (lang === 'cn') {
+                    mobileBtnCn.className = "cursor-pointer hover:text-tech-blue text-tech-blue";
+                    mobileBtnEn.className = "cursor-pointer hover:text-tech-blue";
+                } else {
+                    mobileBtnEn.className = "cursor-pointer hover:text-tech-blue text-tech-blue";
+                    mobileBtnCn.className = "cursor-pointer hover:text-tech-blue";
+                }
+            }
         }
         
         function updateContentLanguage(lang) {
@@ -535,7 +553,33 @@
                 "mobile_nav_solutions": { "cn": "技术方案", "en": "Solutions" },
                 "mobile_nav_story": { "cn": "品牌故事", "en": "Story" },
                 "mobile_nav_support": { "cn": "服务支持", "en": "Support" },
-                "mobile_jd_link": { "cn": "前往京东旗舰店", "en": "Visit JD.com Store" }
+                "mobile_jd_link": { "cn": "前往京东旗舰店", "en": "Visit JD.com Store" },
+                "breadcrumb_home": { "cn": "首页", "en": "Home" },
+                "breadcrumb_support": { "cn": "服务与支持", "en": "Service & Support" },
+                "hero_title": { "cn": "服务与支持", "en": "Service & Support" },
+                "hero_subtitle": { "cn": "无论你正在使用 Prorito 灯具、控制系统还是软件工具，我们都希望你可以方便地获得帮助：在线支持、驱动与固件下载、移动应用，以及寄修服务信息都集中在这里。", "en": "Whether you're using Prorito lights, control systems or software tools, we want you to get help easily: online support, driver and firmware downloads, mobile apps, and repair service information are all here." },
+                "online_support_title": { "cn": "在线支持", "en": "Online Support" },
+                "recommended_method": { "cn": "推荐优先方式", "en": "Recommended Method" },
+                "online_support_desc": { "cn": "如果你在使用产品过程中遇到任何问题（例如：灯具异常、控制系统配置、固件升级、方案咨询等），建议优先通过在线支持渠道联系我们，方便我们记录和追踪问题进度。", "en": "If you encounter any problems during product use (such as: light abnormalities, control system configuration, firmware upgrade, scheme consultation, etc.), it is recommended to contact us through online support channels first, so that we can record and track the progress of the problem." },
+                "submit_ticket_title": { "cn": "提交服务工单", "en": "Submit Service Ticket" },
+                "submit_ticket_desc": { "cn": "适用于需要跟进记录的问题，例如：设备维修、方案咨询、项目配置等。", "en": "Suitable for problems that need to be followed up and recorded, such as: equipment maintenance, program consultation, project configuration, etc." },
+                "submit_ticket_button": { "cn": "提交工单", "en": "Submit Ticket" },
+                "email_communication_title": { "cn": "邮件 / 即时沟通", "en": "Email / Instant Communication" },
+                "problem_tips_title": { "cn": "加快问题定位的小提示", "en": "Tips to Speed Up Problem Localization" },
+                "problem_tips_desc": { "cn": "在提交工单或邮件时，如果可以提供以下信息，将帮助我们更快定位并解决问题：", "en": "When submitting a ticket or email, providing the following information will help us locate and resolve the issue faster:" },
+                "customer_service_title": { "cn": "客户服务", "en": "Customer Service" },
+                "technical_support_title": { "cn": "技术支持", "en": "Technical Support" },
+                "download_center_title": { "cn": "下载中心", "en": "Download Center" },
+                "footer_products": { "cn": "产品系列", "en": "Product Series" },
+                "footer_solutions": { "cn": "技术方案", "en": "Solutions" },
+                "footer_follow_us": { "cn": "关注我们", "en": "Follow Us" },
+                "footer_case_studies": { "cn": "典型案例", "en": "Case Studies" },
+                "footer_lighting_templates": { "cn": "标准化布光模板", "en": "Lighting Templates" },
+                "cat_studio_lighting": { "cn": "演播室灯光", "en": "Studio Lighting" },
+                "cat_st_series": { "cn": "ST系列影视灯", "en": "ST Series" },
+                "cat_p_series": { "cn": "P系列全彩灯", "en": "P Series" },
+                "cat_control_accessories": { "cn": "控制与配件", "en": "Control & Accessories" },
+                "footer_desc": { "cn": "我们致力于为全球创作者提供最可靠的拍摄设备与布光方案。从个人创作到专业演播，始终如一。", "en": "We provide reliable shooting equipment and lighting solutions for creators worldwide. Consistent from personal creation to professional studios." }
             };
             
             // 更新所有带有data-i18n属性的元素
@@ -561,7 +605,7 @@
             });
             
             // 更新移动端京东链接文本
-            const mobileJdLink = document.querySelector('.jd-link');
+            const mobileJdLink = document.querySelector('#mobile-menu .jd-link');
             if (mobileJdLink) {
                 mobileJdLink.textContent = translations['mobile_jd_link'][lang];
             }

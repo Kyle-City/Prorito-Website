@@ -12,6 +12,8 @@
         .bg-tech-blue { background-color: #1B65D4; }
         .border-tech-blue { border-color: #1B65D4; }
         .text-tech-red { color: #EE3527; }
+        .bg-tech-red { background-color: #EE3527; }
+        .border-tech-red { border-color: #EE3527; }
         body { overflow-x: hidden; }
         
         /* --- 导航栏特效 --- */
@@ -36,41 +38,149 @@
         .lang-active { color: #1B65D4; font-weight: 700; }
         .lang-inactive { color: #9CA3AF; font-weight: 400; cursor: pointer; }
         .lang-inactive:hover { color: #000; }
+        
+        /* --- 立即购买按钮特效 --- */
+        #modal-buy-btn:hover {
+            background-color: #EE3527 !important;
+            color: white !important;
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-black antialiased">
 
     <!-- 01. 顶部导航 -->
     <header id="top-nav" class="fixed top-0 left-0 right-0 z-50 nav-transparent transition-all duration-300 h-16 flex items-center">
-        <div class="w-full max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="index.html" class="text-3xl font-extrabold tracking-tight relative z-50">
-                <span class="text-tech-red">Pro</span>rito
-            </a>
+        <div class="w-full max-w-7xl mx-auto px-6 md:px-12 flex items-center">
+            <!-- Logo 和 返回首页按钮 -->
+            <div class="flex items-center">
+                <!-- Logo -->
+                <a href="index.html" class="text-3xl font-extrabold tracking-tight relative z-50">
+                    <span class="text-tech-red">Pro</span>rito
+                </a>
 
-            <!-- 返回首页按钮 -->
-            <a href="index.html" class="hidden lg:block text-xs font-bold px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors mr-1">
-                返回首页
-            </a>
+                <!-- 返回首页按钮 -->
+                <a href="index.html" class="hidden lg:block text-xs font-bold px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors ml-12">
+                    <span data-i18n="back_home">返回首页</span>
+                </a>
+            </div>
 
-            <!-- 桌面端菜单 - 产品类目 -->
-            <nav class="hidden lg:flex space-x-10 text-sm font-medium tracking-wide text-gray-800">
-                <a href="?category=studio" class="hover:text-tech-blue transition-colors relative group category-link active">
-                    <span>演播室灯光</span>
-                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-tech-blue transition-all"></span>
-                </a>
-                <a href="?category=st" class="hover:text-tech-blue transition-colors relative group category-link">
-                    <span>ST系列影视灯</span>
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
-                </a>
-                <a href="?category=p" class="hover:text-tech-blue transition-colors relative group category-link">
-                    <span>P系列全彩灯</span>
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
-                </a>
-                <a href="?category=control" class="hover:text-tech-blue transition-colors relative group category-link">
-                    <span>控制与配件</span>
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
-                </a>
+            <!-- 桌面端菜单 - 产品类目 (居中) -->
+            <nav class="hidden lg:flex items-center justify-center flex-1 space-x-10 text-sm font-medium tracking-wide text-gray-800">
+                <!-- 演播室灯光 -->
+                <div class="relative group">
+                    <a href="?category=studio" class="block hover:text-tech-blue transition-colors relative category-link active">
+                        <span data-i18n="cat_studio_lighting">演播室灯光</span>
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-tech-blue transition-all"></span>
+                    </a>
+                    <!-- 下拉子菜单 -->
+                    <div class="absolute top-full left-0 w-48 bg-white border border-gray-200 shadow-lg rounded-md opacity-0 invisible pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto">
+                        <ul class="py-2">
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">平板柔光灯</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">影视聚光灯</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 会议室灯光 -->
+                <div class="relative group">
+                    <a href="?category=meeting" class="block hover:text-tech-blue transition-colors relative category-link">
+                        <span>会议室灯光</span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
+                    </a>
+                    <!-- 下拉子菜单 -->
+                    <div class="absolute top-full left-0 w-48 bg-white border border-gray-200 shadow-lg rounded-md opacity-0 invisible pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto">
+                        <ul class="py-2">
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">电动翻转面光灯</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">高显指柔光顶灯</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">高显指柔光筒灯</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 专业影视灯光 -->
+                <div class="relative group">
+                    <a href="?category=film" class="block hover:text-tech-blue transition-colors relative category-link">
+                        <span>专业影视灯光</span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
+                    </a>
+                    <!-- 下拉子菜单 -->
+                    <div class="absolute top-full left-0 w-48 bg-white border border-gray-200 shadow-lg rounded-md opacity-0 invisible pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto">
+                        <ul class="py-2">
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">X系列全彩像素影视灯</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">P系列全彩像素影视灯</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">ST系列全彩影视灯</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">SP系列全彩影视灯</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">FC系列全彩聚光灯</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">D/Bi系列聚光灯</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 控制与配件 -->
+                <div class="relative group">
+                    <a href="?category=control" class="block hover:text-tech-blue transition-colors relative category-link">
+                        <span data-i18n="cat_control_accessories">控制与配件</span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
+                    </a>
+                    <!-- 下拉子菜单 -->
+                    <div class="absolute top-full left-0 w-48 bg-white border border-gray-200 shadow-lg rounded-md opacity-0 invisible pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto">
+                        <ul class="py-2">
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">调光台/信号放大器</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">电源箱</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">演播室配件</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">恒力铰链/吊杆</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">抠像漆/抠像地胶</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 矩阵灯/太空灯 -->
+                <div class="relative group">
+                    <a href="?category=matrix" class="block hover:text-tech-blue transition-colors relative category-link">
+                        <span>矩阵灯/太空灯</span>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
+                    </a>
+                    <!-- 下拉子菜单 -->
+                    <div class="absolute top-full left-0 w-48 bg-white border border-gray-200 shadow-lg rounded-md opacity-0 invisible pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto">
+                        <ul class="py-2">
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:text-tech-blue hover:underline">四头灯太空灯</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
 
             <div class="hidden lg:flex items-center space-x-6">
@@ -103,14 +213,25 @@
     <!-- 移动端全屏菜单 -->
     <div id="mobile-menu" class="fixed inset-0 bg-white z-40 mobile-menu-closed flex flex-col justify-center items-center pt-20">
         <nav class="flex flex-col space-y-8 text-center text-2xl font-bold text-gray-900">
-            <a href="?category=studio" class="mobile-link hover:text-tech-blue category-link active">演播室灯光</a>
-            <a href="?category=st" class="mobile-link hover:text-tech-blue category-link">ST系列影视灯</a>
-            <a href="?category=p" class="mobile-link hover:text-tech-blue category-link">P系列全彩灯</a>
-            <a href="?category=control" class="mobile-link hover:text-tech-blue category-link">控制与配件</a>
+            <a href="?category=studio" class="mobile-link hover:text-tech-blue category-link active">
+                <span data-i18n="cat_studio_lighting">演播室灯光</span>
+            </a>
+            <a href="?category=meeting" class="mobile-link hover:text-tech-blue category-link">
+                <span>会议室灯光</span>
+            </a>
+            <a href="?category=film" class="mobile-link hover:text-tech-blue category-link">
+                <span>专业影视灯光</span>
+            </a>
+            <a href="?category=control" class="mobile-link hover:text-tech-blue category-link">
+                <span data-i18n="cat_control_accessories">控制与配件</span>
+            </a>
+            <a href="?category=matrix" class="mobile-link hover:text-tech-blue category-link">
+                <span>矩阵灯/太空灯</span>
+            </a>
             <hr class="border-gray-100 w-20 mx-auto my-4">
             <!-- 移动端京东链接 -->
             <a href="https://jd.com" target="_blank" class="jd-link text-base font-medium text-white bg-black px-6 py-2 rounded-full">
-                前往京东旗舰店
+                <span data-i18n="btn_jd">前往京东旗舰店</span>
             </a>
             <!-- 移动端语言切换 -->
             <div class="flex items-center space-x-4 mt-8 text-sm">
@@ -121,10 +242,10 @@
         </nav>
     </div>
 
-    <main class="pt-24">
-        <!-- 02. 系列 Header -->
+    <main class="pt-16">
+        <!-- 03. 系列 Header -->
         <section class="bg-white py-16 md:py-24 border-b border-gray-100">
-            <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
+            <div class="max-w-[88rem] mx-auto px-4 md:px-8 lg:px-12 text-center">
                 <p class="text-tech-blue font-bold tracking-widest uppercase text-sm mb-4" id="cat-subtitle">Series</p>
                 <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight" id="cat-title">Loading...</h1>
                 <p class="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed" id="cat-desc">
@@ -133,12 +254,157 @@
             </div>
         </section>
 
-        <!-- 03. 产品列表 Grid -->
+        <!-- 02. 面包屑导航 -->
+        <section class="bg-gray-50 py-4 border-b border-gray-100">
+            <div class="max-w-[88rem] mx-auto px-4 md:px-8 lg:px-12">
+                <div class="text-sm text-gray-500">
+                    <span>您的当前位置：</span>
+                    <a href="index.html" class="hover:text-tech-blue transition-colors">首页</a>
+                    <span> &gt; </span>
+                    <a href="category.html" class="hover:text-tech-blue transition-colors">产品系列</a>
+                    <span> &gt; </span>
+                    <span id="current-category" class="text-gray-700 font-medium">正在加载...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04. 产品分类与列表 -->
         <section class="py-16 md:py-24">
-            <div class="max-w-7xl mx-auto px-6 md:px-12">
-                <!-- 动态渲染的容器 -->
-                <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- JS 会自动在这里插入产品卡片 -->
+            <div class="max-w-[88rem] mx-auto px-4 md:px-8 lg:px-12">
+                <div class="flex flex-col lg:flex-row gap-6">
+                    <!-- 左侧边栏：产品分类导航 -->
+                    <div class="lg:w-1/5">
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                            <h3 class="text-lg font-bold mb-5">产品分类</h3>
+                            <ul class="space-y-3">
+                                <!-- 第一大类：演播室灯光 -->
+                                <li>
+                                    <div class="flex items-center justify-between cursor-pointer category-toggle font-bold text-black" data-target="studio-sub">
+                                        <span>演播室灯光</span>
+                                        <span class="text-gray-400">▶</span>
+                                    </div>
+                                    <ul id="studio-sub" class="mt-2 space-y-2 pl-4 hidden">
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            平板柔光灯
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            影视聚光灯
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <!-- 第二大类：会议室灯光 -->
+                                <li>
+                                    <div class="flex items-center justify-between cursor-pointer category-toggle font-bold text-black" data-target="meeting-sub">
+                                        <span>会议室灯光</span>
+                                        <span class="text-gray-400">▶</span>
+                                    </div>
+                                    <ul id="meeting-sub" class="mt-2 space-y-2 pl-4 hidden">
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            电动翻转面光灯
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            高显指柔光顶灯
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            高显指柔光筒灯
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <!-- 第三大类：专业影视灯光 -->
+                                <li>
+                                    <div class="flex items-center justify-between cursor-pointer category-toggle font-bold text-black" data-target="film-sub">
+                                        <span>专业影视灯光</span>
+                                        <span class="text-gray-400">▶</span>
+                                    </div>
+                                    <ul id="film-sub" class="mt-2 space-y-2 pl-4 hidden">
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            X系列全彩像素影视灯
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            P系列全彩像素影视灯
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            ST系列全彩影视灯
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            SP系列全彩影视灯
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            FC系列全彩聚光灯
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            D/Bi系列聚光灯
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <!-- 第四大类：控制与配件 -->
+                                <li>
+                                    <div class="flex items-center justify-between cursor-pointer category-toggle font-bold text-black" data-target="control-sub">
+                                        <span>控制与配件</span>
+                                        <span class="text-gray-400">▶</span>
+                                    </div>
+                                    <ul id="control-sub" class="mt-2 space-y-2 pl-4 hidden">
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            调光台/信号放大器
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            电源箱
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            演播室配件
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            恒力铰链/吊杆
+                                        </li>
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            抠像漆/抠像地胶
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <!-- 第五大类：矩阵灯/太空灯 -->
+                                <li>
+                                    <div class="flex items-center justify-between cursor-pointer category-toggle font-bold text-black" data-target="matrix-sub">
+                                        <span>矩阵灯/太空灯</span>
+                                        <span class="text-gray-400">▶</span>
+                                    </div>
+                                    <ul id="matrix-sub" class="mt-2 space-y-2 pl-4 hidden">
+                                        <li class="text-gray-600">
+                                            <span class="inline-block w-1.5 h-0.5 bg-gray-400 mr-2 mt-1.5"></span>
+                                            四头灯太空灯
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- 右侧主内容区：产品列表 -->
+                    <div class="lg:w-4/5">
+                        <!-- 动态渲染的容器 -->
+                        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- JS 会自动在这里插入产品卡片 -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -183,7 +449,7 @@
                         </div>
                         
                         <!-- 立即购买按钮 - 固定在底部 -->
-                        <a id="modal-buy-btn" href="" target="_blank" class="block w-full text-center bg-white text-tech-red border-2 border-tech-red font-bold py-3 rounded-full hover:bg-tech-red hover:text-white transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-md hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 mt-auto">
+                        <a id="modal-buy-btn" href="" target="_blank" class="block w-full text-center bg-white text-tech-red border border-tech-red font-bold py-3 rounded-full hover:bg-tech-red hover:text-white transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-md hover:shadow-xl focus:outline-none mt-auto">
                             <!-- 按钮文本将通过JS动态设置 -->
                         </a>
                     </div>
@@ -200,28 +466,29 @@
                     <a href="index.html" class="text-3xl font-extrabold tracking-tight text-black">
                         <span class="text-tech-red">Pro</span>rito
                     </a>
-                    <p class="mt-4 text-gray-500 max-w-xs leading-relaxed">
-                        我们致力于为全球电影制作人提供最可靠的拍摄装备。从独立创作到好莱坞片场，始终如一。
-                    </p>
+                    <p class="mt-4 text-gray-500 max-w-xs leading-relaxed" data-i18n="footer_desc">
+                我们致力于为全球创作者提供最可靠的拍摄设备与布光方案。从个人创作到专业演播，始终如一。
+            </p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-black mb-4">产品系列</h4>
+                    <h4 class="font-bold text-black mb-4" data-i18n="footer_products">产品系列</h4>
                     <ul class="space-y-3">
-                        <li><a href="category.html?category=studio" class="hover:text-tech-blue transition-colors">演播室灯光</a></li>
-                        <li><a href="category.html?category=st" class="hover:text-tech-blue transition-colors">ST系列影视灯</a></li>
-                        <li><a href="category.html?category=p" class="hover:text-tech-blue transition-colors">P系列全彩灯</a></li>
-                        <li><a href="category.html?category=control" class="hover:text-tech-blue transition-colors">控制与配件</a></li>
+                        <li><a href="category.html?category=studio" class="hover:text-tech-blue transition-colors" data-i18n="cat_studio_lighting">演播室灯光</a></li>
+                        <li><a href="category.html?category=meeting" class="hover:text-tech-blue transition-colors">会议室灯光</a></li>
+                        <li><a href="category.html?category=film" class="hover:text-tech-blue transition-colors">专业影视灯光</a></li>
+                        <li><a href="category.html?category=control" class="hover:text-tech-blue transition-colors" data-i18n="cat_control_accessories">控制与配件</a></li>
+                        <li><a href="category.html?category=matrix" class="hover:text-tech-blue transition-colors">矩阵灯/太空灯</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-black mb-4">技术方案</h4>
+                    <h4 class="font-bold text-black mb-4" data-i18n="footer_solutions">技术方案</h4>
                     <ul class="space-y-3">
-                        <li><a href="lighting-solutions.html" class="hover:text-tech-blue transition-colors">典型案例</a></li>
-                        <li><a href="lighting-solutions.html" class="hover:text-tech-blue transition-colors">标准化布光模板</a></li>
+                        <li><a href="lighting-solutions.html" class="hover:text-tech-blue transition-colors" data-i18n="footer_case_studies">典型案例</a></li>
+                        <li><a href="lighting-solutions.html" class="hover:text-tech-blue transition-colors" data-i18n="footer_lighting_templates">标准化布光模板</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-black mb-4">关注我们</h4>
+                    <h4 class="font-bold text-black mb-4" data-i18n="footer_follow_us">关注我们</h4>
                     <div class="flex space-x-4">
                         <a href="https://weixin.qq.com" target="_blank" class="w-8 h-8 bg-gray-100 flex items-center justify-center rounded-full hover:bg-green-500">
                             <img src="image/微信.png" alt="微信" class="w-4 h-4">
@@ -346,6 +613,420 @@
                     }
                 ]
             },
+            "meeting_lights": {
+                title: { cn: "会议室灯光", en: "Meeting Room Lights" },
+                desc: { cn: "专业会议室照明解决方案，为您的会议提供舒适的光线环境。", en: "Professional meeting room lighting solutions for comfortable conference environments." },
+                products: [
+                    { 
+                        name: "ML-300 Flip", 
+                        price: "¥2,899", 
+                        img: "image/Grid1.png", 
+                        tag: "电动翻转",
+                        specs: {
+                            cn: [
+                                { name: "功率", value: "30W" },
+                                { name: "色温", value: "3200K-5600K" },
+                                { name: "显色指数", value: "CRI 95+" },
+                                { name: "亮度", value: "4500lux/1m" },
+                                { name: "控制方式", value: "DMX/APP" },
+                                { name: "尺寸", value: "300x300x80mm" },
+                                { name: "重量", value: "2.0kg" }
+                            ],
+                            en: [
+                                { name: "Power", value: "30W" },
+                                { name: "Color Temperature", value: "3200K-5600K" },
+                                { name: "CRI", value: "95+" },
+                                { name: "Brightness", value: "4500lux/1m" },
+                                { name: "Control", value: "DMX/APP" },
+                                { name: "Size", value: "300x300x80mm" },
+                                { name: "Weight", value: "2.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    },
+                    { 
+                        name: "ML-200 Ceiling", 
+                        price: "¥1,599", 
+                        img: "image/Grid1.png", 
+                        tag: "柔光顶灯",
+                        specs: {
+                            cn: [
+                                { name: "功率", value: "20W" },
+                                { name: "色温", value: "4000K" },
+                                { name: "显色指数", value: "CRI 96+" },
+                                { name: "亮度", value: "3000lux/1m" },
+                                { name: "尺寸", value: "250x250x60mm" },
+                                { name: "重量", value: "1.5kg" }
+                            ],
+                            en: [
+                                { name: "Power", value: "20W" },
+                                { name: "Color Temperature", value: "4000K" },
+                                { name: "CRI", value: "96+" },
+                                { name: "Brightness", value: "3000lux/1m" },
+                                { name: "Size", value: "250x250x60mm" },
+                                { name: "Weight", value: "1.5kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    }
+                ]
+            },
+            "film_lights": {
+                title: { cn: "专业影视灯光", en: "Professional Film Lights" },
+                desc: { cn: "专业影视照明解决方案，为您的影视作品提供专业级光线效果。", en: "Professional film lighting solutions for cinematic lighting effects." },
+                products: [
+                    { 
+                        name: "FL-X600 RGB", 
+                        price: "¥4,999", 
+                        img: "image/Grid1.png", 
+                        tag: "全彩像素",
+                        specs: {
+                            cn: [
+                                { name: "功率", value: "60W" },
+                                { name: "色温", value: "2700K-6500K" },
+                                { name: "RGB", value: "全彩可调" },
+                                { name: "显色指数", value: "CRI 95+" },
+                                { name: "亮度", value: "15000lux/1m" },
+                                { name: "控制方式", value: "DMX/APP" },
+                                { name: "尺寸", value: "200x200x120mm" },
+                                { name: "重量", value: "2.8kg" }
+                            ],
+                            en: [
+                                { name: "Power", value: "60W" },
+                                { name: "Color Temperature", value: "2700K-6500K" },
+                                { name: "RGB", value: "Full Color" },
+                                { name: "CRI", value: "95+" },
+                                { name: "Brightness", value: "15000lux/1m" },
+                                { name: "Control", value: "DMX/APP" },
+                                { name: "Size", value: "200x200x120mm" },
+                                { name: "Weight", value: "2.8kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    },
+                    { 
+                        name: "FL-P400 RGB", 
+                        price: "¥3,699", 
+                        img: "image/Grid1.png", 
+                        tag: "便携全彩",
+                        specs: {
+                            cn: [
+                                { name: "功率", value: "40W" },
+                                { name: "色温", value: "2700K-6500K" },
+                                { name: "RGB", value: "全彩可调" },
+                                { name: "显色指数", value: "CRI 94+" },
+                                { name: "亮度", value: "10000lux/1m" },
+                                { name: "尺寸", value: "180x180x100mm" },
+                                { name: "重量", value: "2.0kg" }
+                            ],
+                            en: [
+                                { name: "Power", value: "40W" },
+                                { name: "Color Temperature", value: "2700K-6500K" },
+                                { name: "RGB", value: "Full Color" },
+                                { name: "CRI", value: "94+" },
+                                { name: "Brightness", value: "10000lux/1m" },
+                                { name: "Size", value: "180x180x100mm" },
+                                { name: "Weight", value: "2.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    }
+                ]
+            },
+            "control": {
+                title: { cn: "控制与配件", en: "Control & Accessories" },
+                desc: { cn: "专业灯光控制设备和配件，为您的灯光系统提供完整解决方案。", en: "Professional lighting control equipment and accessories for complete lighting systems." },
+                products: [
+                    { 
+                        name: "C-100 Console", 
+                        price: "¥8,999", 
+                        img: "image/Grid1.png", 
+                        tag: "调光台",
+                        specs: {
+                            cn: [
+                                { name: "通道数", value: "512" },
+                                { name: "控制方式", value: "DMX512" },
+                                { name: "显示屏幕", value: "7寸触摸屏" },
+                                { name: "场景存储", value: "1000个" },
+                                { name: "尺寸", value: "400x300x150mm" },
+                                { name: "重量", value: "5.0kg" }
+                            ],
+                            en: [
+                                { name: "Channels", value: "512" },
+                                { name: "Control", value: "DMX512" },
+                                { name: "Display", value: "7inch Touch Screen" },
+                                { name: "Scenes", value: "1000" },
+                                { name: "Size", value: "400x300x150mm" },
+                                { name: "Weight", value: "5.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    },
+                    { 
+                        name: "A-200 Amplifier", 
+                        price: "¥1,299", 
+                        img: "image/Grid1.png", 
+                        tag: "信号放大器",
+                        specs: {
+                            cn: [
+                                { name: "输出端口", value: "4路" },
+                                { name: "信号类型", value: "DMX512" },
+                                { name: "供电电压", value: "AC100-240V" },
+                                { name: "尺寸", value: "150x100x80mm" },
+                                { name: "重量", value: "1.0kg" }
+                            ],
+                            en: [
+                                { name: "Outputs", value: "4" },
+                                { name: "Signal", value: "DMX512" },
+                                { name: "Voltage", value: "AC100-240V" },
+                                { name: "Size", value: "150x100x80mm" },
+                                { name: "Weight", value: "1.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    }
+                ]
+            },
+            "matrix_lights": {
+                title: { cn: "矩阵灯/太空灯", en: "Matrix/Space Lights" },
+                desc: { cn: "创意矩阵灯光解决方案，为您的场景增添独特视觉效果。", en: "Creative matrix lighting solutions for unique visual effects in your scenes." },
+                products: [
+                    { 
+                        name: "M-500 Matrix", 
+                        price: "¥12,999", 
+                        img: "image/Grid1.png", 
+                        tag: "矩阵灯",
+                        specs: {
+                            cn: [
+                                { name: "灯珠数量", value: "100颗" },
+                                { name: "功率", value: "100W" },
+                                { name: "色温", value: "2700K-6500K" },
+                                { name: "RGB", value: "全彩可调" },
+                                { name: "控制方式", value: "DMX/ArtNet" },
+                                { name: "尺寸", value: "500x500x100mm" },
+                                { name: "重量", value: "8.0kg" }
+                            ],
+                            en: [
+                                { name: "LEDs", value: "100" },
+                                { name: "Power", value: "100W" },
+                                { name: "Color Temperature", value: "2700K-6500K" },
+                                { name: "RGB", value: "Full Color" },
+                                { name: "Control", value: "DMX/ArtNet" },
+                                { name: "Size", value: "500x500x100mm" },
+                                { name: "Weight", value: "8.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    },
+                    { 
+                        name: "S-300 Space", 
+                        price: "¥8,999", 
+                        img: "image/Grid1.png", 
+                        tag: "太空灯",
+                        specs: {
+                            cn: [
+                                { name: "灯珠数量", value: "50颗" },
+                                { name: "功率", value: "50W" },
+                                { name: "色温", value: "2700K-6500K" },
+                                { name: "RGB", value: "全彩可调" },
+                                { name: "控制方式", value: "DMX/APP" },
+                                { name: "尺寸", value: "300x300x80mm" },
+                                { name: "重量", value: "4.0kg" }
+                            ],
+                            en: [
+                                { name: "LEDs", value: "50" },
+                                { name: "Power", value: "50W" },
+                                { name: "Color Temperature", value: "2700K-6500K" },
+                                { name: "RGB", value: "Full Color" },
+                                { name: "Control", value: "DMX/APP" },
+                                { name: "Size", value: "300x300x80mm" },
+                                { name: "Weight", value: "4.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    }
+                ]
+            },
+            "matrix": {
+                title: { cn: "矩阵灯/太空灯", en: "Matrix/Space Lights" },
+                desc: { cn: "创意矩阵灯光解决方案，为您的场景增添独特视觉效果。", en: "Creative matrix lighting solutions for unique visual effects in your scenes." },
+                products: [
+                    { 
+                        name: "M-500 Matrix", 
+                        price: "¥12,999", 
+                        img: "image/Grid1.png", 
+                        tag: "矩阵灯",
+                        specs: {
+                            cn: [
+                                { name: "灯珠数量", value: "100颗" },
+                                { name: "功率", value: "100W" },
+                                { name: "色温", value: "2700K-6500K" },
+                                { name: "RGB", value: "全彩可调" },
+                                { name: "控制方式", value: "DMX/ArtNet" },
+                                { name: "尺寸", value: "500x500x100mm" },
+                                { name: "重量", value: "8.0kg" }
+                            ],
+                            en: [
+                                { name: "LEDs", value: "100" },
+                                { name: "Power", value: "100W" },
+                                { name: "Color Temperature", value: "2700K-6500K" },
+                                { name: "RGB", value: "Full Color" },
+                                { name: "Control", value: "DMX/ArtNet" },
+                                { name: "Size", value: "500x500x100mm" },
+                                { name: "Weight", value: "8.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    },
+                    { 
+                        name: "S-300 Space", 
+                        price: "¥8,999", 
+                        img: "image/Grid1.png", 
+                        tag: "太空灯",
+                        specs: {
+                            cn: [
+                                { name: "灯珠数量", value: "50颗" },
+                                { name: "功率", value: "50W" },
+                                { name: "色温", value: "2700K-6500K" },
+                                { name: "RGB", value: "全彩可调" },
+                                { name: "控制方式", value: "DMX/APP" },
+                                { name: "尺寸", value: "300x300x80mm" },
+                                { name: "重量", value: "4.0kg" }
+                            ],
+                            en: [
+                                { name: "LEDs", value: "50" },
+                                { name: "Power", value: "50W" },
+                                { name: "Color Temperature", value: "2700K-6500K" },
+                                { name: "RGB", value: "Full Color" },
+                                { name: "Control", value: "DMX/APP" },
+                                { name: "Size", value: "300x300x80mm" },
+                                { name: "Weight", value: "4.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    }
+                ]
+            },
+            "meeting": {
+                title: { cn: "会议室灯光", en: "Meeting Room Lights" },
+                desc: { cn: "专业会议室照明解决方案，为您的会议提供舒适的光线环境。", en: "Professional meeting room lighting solutions for comfortable conference environments." },
+                products: [
+                    { 
+                        name: "ML-300 Flip", 
+                        price: "¥2,899", 
+                        img: "image/Grid1.png", 
+                        tag: "电动翻转",
+                        specs: {
+                            cn: [
+                                { name: "功率", value: "30W" },
+                                { name: "色温", value: "3200K-5600K" },
+                                { name: "显色指数", value: "CRI 95+" },
+                                { name: "亮度", value: "4500lux/1m" },
+                                { name: "控制方式", value: "DMX/APP" },
+                                { name: "尺寸", value: "300x300x80mm" },
+                                { name: "重量", value: "2.0kg" }
+                            ],
+                            en: [
+                                { name: "Power", value: "30W" },
+                                { name: "Color Temperature", value: "3200K-5600K" },
+                                { name: "CRI", value: "95+" },
+                                { name: "Brightness", value: "4500lux/1m" },
+                                { name: "Control", value: "DMX/APP" },
+                                { name: "Size", value: "300x300x80mm" },
+                                { name: "Weight", value: "2.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    },
+                    { 
+                        name: "ML-200 Ceiling", 
+                        price: "¥1,599", 
+                        img: "image/Grid1.png", 
+                        tag: "柔光顶灯",
+                        specs: {
+                            cn: [
+                                { name: "功率", value: "20W" },
+                                { name: "色温", value: "4000K" },
+                                { name: "显色指数", value: "CRI 96+" },
+                                { name: "亮度", value: "3000lux/1m" },
+                                { name: "尺寸", value: "250x250x60mm" },
+                                { name: "重量", value: "1.5kg" }
+                            ],
+                            en: [
+                                { name: "Power", value: "20W" },
+                                { name: "Color Temperature", value: "4000K" },
+                                { name: "CRI", value: "96+" },
+                                { name: "Brightness", value: "3000lux/1m" },
+                                { name: "Size", value: "250x250x60mm" },
+                                { name: "Weight", value: "1.5kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    }
+                ]
+            },
+            "film": {
+                title: { cn: "专业影视灯光", en: "Professional Film Lights" },
+                desc: { cn: "专业影视照明解决方案，为您的影视作品提供高品质光线。", en: "Professional film lighting solutions for high-quality content in your film productions." },
+                products: [
+                    { 
+                        name: "FL-X600 RGB", 
+                        price: "¥4,999", 
+                        img: "image/Grid1.png", 
+                        tag: "全彩像素",
+                        specs: {
+                            cn: [
+                                { name: "功率", value: "60W" },
+                                { name: "色温", value: "2700K-6500K" },
+                                { name: "RGB", value: "全彩可调" },
+                                { name: "显色指数", value: "CRI 95+" },
+                                { name: "亮度", value: "15000lux/1m" },
+                                { name: "控制方式", value: "DMX/APP" },
+                                { name: "尺寸", value: "200x200x120mm" },
+                                { name: "重量", value: "2.8kg" }
+                            ],
+                            en: [
+                                { name: "Power", value: "60W" },
+                                { name: "Color Temperature", value: "2700K-6500K" },
+                                { name: "RGB", value: "Full Color" },
+                                { name: "CRI", value: "95+" },
+                                { name: "Brightness", value: "15000lux/1m" },
+                                { name: "Control", value: "DMX/APP" },
+                                { name: "Size", value: "200x200x120mm" },
+                                { name: "Weight", value: "2.8kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    },
+                    { 
+                        name: "FL-P400 RGB", 
+                        price: "¥3,699", 
+                        img: "image/Grid1.png", 
+                        tag: "便携全彩",
+                        specs: {
+                            cn: [
+                                { name: "功率", value: "40W" },
+                                { name: "色温", value: "2700K-6500K" },
+                                { name: "RGB", value: "全彩可调" },
+                                { name: "显色指数", value: "CRI 94+" },
+                                { name: "亮度", value: "10000lux/1m" },
+                                { name: "尺寸", value: "180x180x100mm" },
+                                { name: "重量", value: "2.0kg" }
+                            ],
+                            en: [
+                                { name: "Power", value: "40W" },
+                                { name: "Color Temperature", value: "2700K-6500K" },
+                                { name: "RGB", value: "Full Color" },
+                                { name: "CRI", value: "94+" },
+                                { name: "Brightness", value: "10000lux/1m" },
+                                { name: "Size", value: "180x180x100mm" },
+                                { name: "Weight", value: "2.0kg" }
+                            ],
+                            jdLink: "https://jd.com"
+                        }
+                    }
+                ]
+            },
             "st_lights": {
                 title: { cn: "ST系列影视灯", en: "ST Series Lights" },
                 desc: { cn: "轻便型专业灯光系统，适合外景拍摄和移动创作。", en: "Portable professional lighting system for outdoor shooting and mobile creation." },
@@ -458,7 +1139,7 @@
                     },
                     { 
                         name: "P-300 RGB", 
-                        price: "¥2,199", 
+                        price: "¥2,499", 
                         img: "https://images.unsplash.com/photo-1563547257008-25c796b412dd?w=600", 
                         tag: "便携",
                         specs: {
@@ -480,105 +1161,55 @@
                             ],
                             jdLink: "https://jd.com"
                         }
-                    },
-                    { 
-                        name: "P-100 RGB Stick", 
-                        price: "¥599", 
-                        img: "https://images.unsplash.com/photo-1563547257008-25c796b412dd?w=600", 
-                        tag: "手持",
-                        specs: {
-                            cn: [
-                                { name: "功率", value: "10W" },
-                                { name: "色温", value: "2700K-6500K" },
-                                { name: "RGB", value: "全彩可调" },
-                                { name: "长度", value: "300mm" },
-                                { name: "重量", value: "0.3kg" },
-                                { name: "电池", value: "内置2000mAh" }
-                            ],
-                            en: [
-                                { name: "Power", value: "10W" },
-                                { name: "Color Temperature", value: "2700K-6500K" },
-                                { name: "RGB", value: "Full Color" },
-                                { name: "Length", value: "300mm" },
-                                { name: "Weight", value: "0.3kg" },
-                                { name: "Battery", value: "Built-in 2000mAh" }
-                            ],
-                            jdLink: "https://jd.com"
-                        }
                     }
                 ]
             },
-            "accessories": {
-                title: { cn: "控制与配件", en: "Controls & Accessories" },
-                desc: { cn: "无线控制与扩展配件，完善您的拍摄系统。", en: "Wireless controls and expansion accessories to complete your shooting system." },
+            "control": {
+                title: { cn: "控制与配件", en: "Control & Accessories" },
+                desc: { cn: "专业灯光控制设备和配套配件，为您的灯光系统提供完整解决方案。", en: "Professional lighting control equipment and accessories for complete lighting system solutions." },
                 products: [
                     { 
-                        name: "无线控制器", 
-                        price: "¥899", 
-                        img: "https://images.unsplash.com/photo-1555617981-d4a46a67fba9?w=600", 
-                        tag: "远程控制",
+                        name: "DMX-1024 Controller", 
+                        price: "¥2,999", 
+                        img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600", 
+                        tag: "专业",
                         specs: {
                             cn: [
-                                { name: "控制方式", value: "2.4GHz无线" },
-                                { name: "控制距离", value: "50m" },
-                                { name: "通道数", value: "16通道" },
-                                { name: "尺寸", value: "150x100x30mm" },
-                                { name: "重量", value: "0.2kg" },
-                                { name: "电池", value: "AA电池x2" }
+                                { name: "通道数", value: "1024" },
+                                { name: "场景", value: "200个" },
+                                { name: "控制方式", value: "USB/DMX" },
+                                { name: "尺寸", value: "480x240x100mm" },
+                                { name: "重量", value: "3.5kg" }
                             ],
                             en: [
-                                { name: "Control Method", value: "2.4GHz Wireless" },
-                                { name: "Range", value: "50m" },
-                                { name: "Channels", value: "16" },
-                                { name: "Size", value: "150x100x30mm" },
-                                { name: "Weight", value: "0.2kg" },
-                                { name: "Battery", value: "AA x2" }
+                                { name: "Channels", value: "1024" },
+                                { name: "Scenes", value: "200" },
+                                { name: "Control", value: "USB/DMX" },
+                                { name: "Size", value: "480x240x100mm" },
+                                { name: "Weight", value: "3.5kg" }
                             ],
                             jdLink: "https://jd.com"
                         }
                     },
                     { 
-                        name: "柔光箱套装", 
-                        price: "¥699", 
-                        img: "https://images.unsplash.com/photo-1596561579201-9e7724227c7f?w=600", 
-                        tag: "附件",
+                        name: "Power Box 600W", 
+                        price: "¥1,299", 
+                        img: "https://images.unsplash.com/photo-1581091226311-5f3523b7c9d0?w=600", 
+                        tag: "稳定",
                         specs: {
                             cn: [
-                                { name: "尺寸", value: "60x60cm" },
-                                { name: "材质", value: "尼龙" },
-                                { name: "适用灯型", value: "SL系列" },
-                                { name: "包含配件", value: "柔光布、支架、网格" },
-                                { name: "重量", value: "0.8kg" }
+                                { name: "功率", value: "600W" },
+                                { name: "输出", value: "4路" },
+                                { name: "电压", value: "AC100-240V" },
+                                { name: "尺寸", value: "200x150x80mm" },
+                                { name: "重量", value: "1.5kg" }
                             ],
                             en: [
-                                { name: "Size", value: "60x60cm" },
-                                { name: "Material", value: "Nylon" },
-                                { name: "Compatible", value: "SL Series" },
-                                { name: "Included", value: "Soft Cloth, Bracket, Grid" },
-                                { name: "Weight", value: "0.8kg" }
-                            ],
-                            jdLink: "https://jd.com"
-                        }
-                    },
-                    { 
-                        name: "电源适配器", 
-                        price: "¥299", 
-                        img: "https://images.unsplash.com/photo-1623932782736-253765108b3c?w=600", 
-                        tag: "配件",
-                        specs: {
-                            cn: [
-                                { name: "输入电压", value: "AC 100-240V" },
-                                { name: "输出电压", value: "DC 12V" },
-                                { name: "输出电流", value: "8A" },
-                                { name: "功率", value: "96W" },
-                                { name: "适用灯型", value: "SL系列" }
-                            ],
-                            en: [
-                                { name: "Input", value: "AC 100-240V" },
-                                { name: "Output", value: "DC 12V" },
-                                { name: "Current", value: "8A" },
-                                { name: "Power", value: "96W" },
-                                { name: "Compatible", value: "SL Series" }
+                                { name: "Power", value: "600W" },
+                                { name: "Output", value: "4 Channels" },
+                                { name: "Voltage", value: "AC100-240V" },
+                                { name: "Size", value: "200x150x80mm" },
+                                { name: "Weight", value: "1.5kg" }
                             ],
                             jdLink: "https://jd.com"
                         }
@@ -587,325 +1218,212 @@
             }
         };
 
-        // --- 2. 获取 URL 参数 ---
-        const urlParams = new URLSearchParams(window.location.search);
-        let currentLang = 'cn';
-
-        // --- 3. 渲染页面函数 ---
-        function renderPage() {
-            // 获取当前URL参数
+        // --- 2. 工具函数 ---        // 获取 URL 参数
+        function getURLParam(key) {
             const urlParams = new URLSearchParams(window.location.search);
-            let categoryType;
+            return urlParams.get(key);
+        }
+
+        // --- 3. 初始化页面 ---        // 监听 DOM 加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 解析 URL，确定要显示哪个分类的产品
+            const category = getURLParam('category');
             
-            // 支持旧的type参数（兼容首页链接）和新的category参数
-            const typeParam = urlParams.get('type');
-            const categoryParam = urlParams.get('category');
+            // 默认显示第一个分类 (演播室灯光)
+            const categoryKey = category || 'studio';
             
-            if (typeParam) {
-                // 如果有type参数，直接使用（兼容首页链接）
-                categoryType = typeParam;
-            } else {
-                // 如果没有type参数，使用category参数
-                const category = categoryParam || 'studio';
-                
-                // 类目映射关系
-                const categoryMap = {
-                    'studio': 'studio_lights',
-                    'st': 'st_lights',
-                    'p': 'p_lights',
-                    'control': 'accessories'
-                };
-                
-                // 获取对应的数据键名
-                categoryType = categoryMap[category];
-            }
+            // 根据分类 key 获取对应的数据
+            const categoryData = db[categoryKey + '_lights'] || db[categoryKey] || db['studio_lights'];
             
-            const data = db[categoryType];
+            // 更新页面标题、描述
+            document.getElementById('cat-title').textContent = categoryData.title.cn;
+            document.getElementById('cat-desc').textContent = categoryData.desc.cn;
+            document.getElementById('current-category').textContent = categoryData.title.cn;
             
-            // 如果数据存在，更新URL参数为新的category格式
-            if (data && typeParam) {
-                // 反向映射，从type值获取对应的category值
-                const reverseCategoryMap = {
-                    'studio_lights': 'studio',
-                    'st_lights': 'st',
-                    'p_lights': 'p',
-                    'accessories': 'control'
-                };
-                
-                const newCategory = reverseCategoryMap[typeParam];
-                if (newCategory) {
-                    // 更新URL参数
-                    const newParams = new URLSearchParams(window.location.search);
-                    newParams.delete('type');
-                    newParams.set('category', newCategory);
-                    window.history.replaceState({}, '', `?${newParams.toString()}`);
-                    
-                    // 手动调用updateActiveCategory函数，确保活动类正确显示
-                    updateActiveCategory();
+            // 渲染产品卡片
+            renderProductGrid(categoryData.products);
+            
+            // 更新导航标签活动状态
+            const navLinks = document.querySelectorAll('.category-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active', 'text-tech-blue');
+                link.querySelector('span:last-child').classList.remove('w-full');
+                link.querySelector('span:last-child').classList.add('w-0');
+            });
+            
+            // 为当前分类的导航标签添加活动状态
+            const activeNavLink = document.querySelector(`.category-link[href*="?category=${categoryKey}"]`);
+            if (activeNavLink) {
+                activeNavLink.classList.add('active', 'text-tech-blue');
+                activeNavLink.querySelector('span:last-child').classList.remove('w-0');
+                activeNavLink.querySelector('span:last-child').classList.add('w-full');
+            } else if (categoryKey === 'studio') {
+                // 处理默认情况
+                const defaultNavLink = document.querySelector('.category-link[href*="?category=studio"]');
+                if (defaultNavLink) {
+                    defaultNavLink.classList.add('active', 'text-tech-blue');
+                    defaultNavLink.querySelector('span:last-child').classList.remove('w-0');
+                    defaultNavLink.querySelector('span:last-child').classList.add('w-full');
                 }
             }
-            
-            if (!data) {
-                document.getElementById('cat-title').innerText = "未找到该系列";
-                return;
-            }
 
-            // 更新头部文本
-            document.getElementById('cat-title').innerText = data.title[currentLang];
-            document.getElementById('cat-desc').innerText = data.desc[currentLang];
-            document.getElementById('cat-subtitle').innerText = currentLang === 'cn' ? '产品系列' : 'Product Series';
+            // 左侧分类菜单折叠功能
+            const categoryToggles = document.querySelectorAll('.category-toggle');
+            categoryToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const targetUl = document.getElementById(targetId);
+                    const arrow = this.querySelector('span:last-child');
+                    if (targetUl) {
+                        targetUl.classList.toggle('hidden');
+                        arrow.style.transform = targetUl.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(90deg)';
+                    }
+                });
+            });
 
-            // 更新产品列表
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = ''; // 清空现有内容
+            // 移动端菜单开关
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-            data.products.forEach((item, index) => {
-                const card = `
-                    <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
-                        <div class="relative h-64 overflow-hidden bg-gray-100">
-                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 left-4 bg-black text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">
-                                ${item.tag}
-                            </span>
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('mobile-menu-closed');
+                mobileMenu.classList.toggle('mobile-menu-open');
+            });
+
+            // 导航栏滚动效果
+            const topNav = document.getElementById('top-nav');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 10) {
+                    topNav.classList.remove('nav-transparent');
+                    topNav.classList.add('nav-scrolled');
+                } else {
+                    topNav.classList.remove('nav-scrolled');
+                    topNav.classList.add('nav-transparent');
+                }
+            });
+        });
+
+        // --- 4. 渲染产品网格 ---        // 渲染产品卡片到页面
+        function renderProductGrid(products) {
+            const container = document.getElementById('product-grid');
+            container.innerHTML = ''; // 清空现有内容
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 group cursor-pointer';
+                card.onclick = function() {
+                    openProductModal(product);
+                };
+
+                card.innerHTML = `
+                    <div class="aspect-video bg-gray-100 overflow-hidden">
+                        <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-bold text-lg text-gray-900 group-hover:text-tech-blue transition-colors">${product.name}</h3>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs font-medium">${product.tag}</span>
                         </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-bold text-gray-900">${item.name}</h3>
-                                <span class="text-tech-blue font-bold">${item.price}</span>
-                            </div>
-                            <p class="text-sm text-gray-500 mb-6 line-clamp-2">Precision Gear 专业品质保证，现货发售。</p>
-                            <button onclick="openProductModal(${index})" class="block w-full text-center bg-white border border-black text-black font-bold py-3 rounded-full hover:bg-black hover:text-white transition-colors duration-300">
-                                ${currentLang === 'cn' ? '查看详情' : 'View Details'}
+                        <div class="flex justify-between items-center">
+                            <p class="text-xl font-bold text-tech-red">${product.price}</p>
+                            <button class="text-tech-blue hover:text-tech-red transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
                             </button>
                         </div>
                     </div>
                 `;
-                grid.innerHTML += card;
+
+                container.appendChild(card);
             });
         }
 
-        // --- 4. 语言切换函数 ---
-        function setLanguage(lang) {
-            currentLang = lang;
-            
-            // 更新桌面端语言切换样式
-            const btnEn = document.getElementById('lang-en');
-            const btnCn = document.getElementById('lang-cn');
-            if (lang === 'cn') {
-                btnCn.className = "lang-active";
-                btnEn.className = "lang-inactive";
-            } else {
-                btnEn.className = "lang-active";
-                btnCn.className = "lang-inactive";
-            }
-
-            // 更新移动端语言切换样式
-            const mobileBtnEn = document.getElementById('mobile-lang-en');
-            const mobileBtnCn = document.getElementById('mobile-lang-cn');
-            if (mobileBtnEn && mobileBtnCn) {
-                if (lang === 'cn') {
-                    mobileBtnCn.className = "lang-active cursor-pointer hover:text-tech-blue";
-                    mobileBtnEn.className = "lang-inactive cursor-pointer hover:text-tech-blue";
-                } else {
-                    mobileBtnEn.className = "lang-active cursor-pointer hover:text-tech-blue";
-                    mobileBtnCn.className = "lang-inactive cursor-pointer hover:text-tech-blue";
-                }
-            }
-
-            // 重新渲染内容
-            renderPage();
-        }
-
-        // --- 5. 导航栏滚动效果 ---
-        const nav = document.getElementById('top-nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
-            }
-        });
-
-        // --- 6. 移动端菜单逻辑 ---
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuLinks = document.querySelectorAll('.mobile-link');
-        let isMenuOpen = false;
-
-        function toggleMenu() {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('mobile-menu-closed');
-                mobileMenu.classList.add('mobile-menu-open');
-                menuBtn.children[0].style.transform = "rotate(45deg) translate(5px, 5px)";
-                menuBtn.children[1].style.opacity = "0";
-                menuBtn.children[2].style.width = "24px";
-                menuBtn.children[2].style.transform = "rotate(-45deg) translate(5px, -6px)";
-                document.body.style.overflow = 'hidden';
-            } else {
-                mobileMenu.classList.remove('mobile-menu-open');
-                mobileMenu.classList.add('mobile-menu-closed');
-                menuBtn.children[0].style.transform = "none";
-                menuBtn.children[1].style.opacity = "1";
-                menuBtn.children[2].style.width = "16px";
-                menuBtn.children[2].style.transform = "none";
-                document.body.style.overflow = 'auto';
-            }
-        }
-        if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
-        menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
-
-        // --- 7. 产品类目切换逻辑 ---
-        const categoryLinks = document.querySelectorAll('.category-link');
-        
-        // 获取当前URL参数中的类目
-        function getCurrentCategory() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('category') || 'studio';
-        }
-        
-        // 更新活动类
-        function updateActiveCategory() {
-            const currentCategory = getCurrentCategory();
-            categoryLinks.forEach(link => {
-                link.classList.remove('active', 'text-tech-blue');
-                link.classList.add('text-gray-800');
-                
-                // 检查链接的URL参数是否与当前类目完全匹配
-                const linkParams = new URLSearchParams(link.href.split('?')[1] || '');
-                const linkCategory = linkParams.get('category');
-                
-                if (linkCategory === currentCategory) {
-                    link.classList.add('active', 'text-tech-blue');
-                    
-                    // 更新桌面端链接的下划线
-                    const underline = link.querySelector('span:last-child');
-                    if (underline) {
-                        underline.style.width = '100%';
-                    }
-                } else {
-                    // 重置其他链接的下划线
-                    const underline = link.querySelector('span:last-child');
-                    if (underline) {
-                        underline.style.width = '0';
-                    }
-                }
-            });
-        }
-        
-        // 页面加载时更新活动类目
-        window.addEventListener('load', updateActiveCategory);
-        
-        // 监听类目链接点击事件
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                // 阻止默认跳转
-                e.preventDefault();
-                
-                // 获取目标类目
-                const targetCategory = new URL(link.href).searchParams.get('category');
-                
-                // 更新URL参数
-                const urlParams = new URLSearchParams(window.location.search);
-                urlParams.set('category', targetCategory);
-                window.history.pushState({}, '', `?${urlParams.toString()}`);
-                
-                // 更新活动类和产品列表
-                updateActiveCategory();
-                
-                // 重新加载产品数据
-                renderPage();
-                
-                // 如果是移动端，关闭菜单
-                if (isMenuOpen) {
-                    toggleMenu();
-                }
-            });
-        });
-
-        // --- 4. 模态框功能 ---
-        function openProductModal(index) {
-            const data = db[categoryType];
-            const product = data.products[index];
-            
-            // 更新模态框内容
-            document.getElementById('modal-title').innerText = product.name;
-            document.getElementById('modal-price').innerText = product.price;
-            document.getElementById('modal-tag').innerText = product.tag;
+        // --- 5. 产品详情模态框 ---        // 打开产品详情模态框
+        function openProductModal(product) {
+            const modal = document.getElementById('product-modal');
+            document.getElementById('modal-title').textContent = product.name;
+            document.getElementById('modal-price').textContent = product.price;
+            document.getElementById('modal-tag').textContent = product.tag;
             document.getElementById('modal-image').src = product.img;
             document.getElementById('modal-image').alt = product.name;
-            
-            // 生成4列参数表格
-            const specs = product.specs[currentLang];
-            let tableHTML = '<table class="w-full border-collapse text-xs">';
-            
-            // 4列表头
-            tableHTML += '<thead><tr><th class="text-left p-1 text-gray-600 font-medium border-b border-gray-200">参数</th><th class="text-left p-1 text-gray-600 font-medium border-b border-gray-200">数值</th><th class="text-left p-1 text-gray-600 font-medium border-b border-gray-200">参数</th><th class="text-left p-1 text-gray-600 font-medium border-b border-gray-200">数值</th></tr></thead><tbody>';
-            
-            // 将参数分成4列显示，每2个参数一行
-            for (let i = 0; i < specs.length; i += 2) {
-                const spec1 = specs[i];
-                const spec2 = specs[i + 1];
-                
-                tableHTML += `
-                    <tr class="${i % 4 === 0 ? 'bg-gray-50' : 'bg-white'}">
-                        <td class="p-1 border-b border-gray-100 text-gray-700">${spec1.name}</td>
-                        <td class="p-1 border-b border-gray-100 font-semibold text-gray-900">${spec1.value}</td>
-                        ${spec2 ? `
-                            <td class="p-1 border-b border-gray-100 text-gray-700">${spec2.name}</td>
-                            <td class="p-1 border-b border-gray-100 font-semibold text-gray-900">${spec2.value}</td>
-                        ` : `
-                            <td class="p-1 border-b border-gray-100"></td>
-                            <td class="p-1 border-b border-gray-100"></td>
-                        `}
-                    </tr>
+
+            // 渲染规格表格
+            const specsContainer = document.getElementById('modal-specs');
+            specsContainer.innerHTML = '';
+
+            const table = document.createElement('table');
+            table.className = 'w-full border-collapse text-xs';
+
+            // 遍历中文规格并生成表格行
+            product.specs.cn.forEach(spec => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="py-2 pr-4 font-medium text-gray-700">${spec.name}</td>
+                    <td class="py-2 text-gray-500">${spec.value}</td>
                 `;
-            }
-            
-            tableHTML += '</tbody></table>';
-            document.getElementById('modal-specs').innerHTML = tableHTML;
-            
-            // 设置购买链接
-            document.getElementById('modal-buy-btn').href = product.specs.jdLink;
-            
-            // 更新购买按钮文本
-            document.getElementById('modal-buy-btn').innerText = currentLang === 'cn' ? '立即购买' : 'Buy Now';
-            
+                table.appendChild(row);
+            });
+
+            specsContainer.appendChild(table);
+
+            // 设置购买按钮
+            const buyBtn = document.getElementById('modal-buy-btn');
+            buyBtn.href = product.specs.jdLink;
+            buyBtn.textContent = '立即购买';
+
             // 显示模态框
-            document.getElementById('product-modal').classList.remove('hidden');
-            
-            // 阻止页面滚动
-            document.body.style.overflow = 'hidden';
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
         }
-        
-        function closeProductModal() {
-            // 隐藏模态框
-            document.getElementById('product-modal').classList.add('hidden');
-            
-            // 恢复页面滚动
-            document.body.style.overflow = '';
-        }
-        
+
+        // 关闭产品详情模态框
+        document.getElementById('close-modal').addEventListener('click', function() {
+            const modal = document.getElementById('product-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // 恢复背景滚动
+        });
+
         // 点击模态框外部关闭
         document.getElementById('product-modal').addEventListener('click', function(e) {
             if (e.target === this) {
-                closeProductModal();
-            }
-        });
-        
-        // 点击关闭按钮关闭
-        document.getElementById('close-modal').addEventListener('click', closeProductModal);
-        
-        // 键盘ESC关闭
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeProductModal();
+                this.classList.add('hidden');
+                document.body.style.overflow = 'auto';
             }
         });
 
-        // --- 5. 初始化 ---
-        renderPage();
+        // --- 6. 语言切换 (示例) ---        // 语言切换函数
+        function setLanguage(lang) {
+            // 这里只是示例，实际项目中需要根据 lang 参数切换所有文本
+            console.log('切换语言为:', lang);
 
+            // 更新语言按钮状态
+            document.querySelectorAll('.lang-active').forEach(el => el.classList.remove('lang-active'));
+            document.querySelectorAll('.lang-inactive').forEach(el => el.classList.add('lang-inactive'));
+
+            if (lang === 'en') {
+                document.getElementById('lang-en').classList.add('lang-active');
+                document.getElementById('lang-en').classList.remove('lang-inactive');
+                document.getElementById('lang-cn').classList.add('lang-inactive');
+                document.getElementById('lang-cn').classList.remove('lang-active');
+
+                document.getElementById('mobile-lang-en').classList.add('lang-active');
+                document.getElementById('mobile-lang-en').classList.remove('lang-inactive');
+                document.getElementById('mobile-lang-cn').classList.add('lang-inactive');
+                document.getElementById('mobile-lang-cn').classList.remove('lang-active');
+            } else {
+                document.getElementById('lang-cn').classList.add('lang-active');
+                document.getElementById('lang-cn').classList.remove('lang-inactive');
+                document.getElementById('lang-en').classList.add('lang-inactive');
+                document.getElementById('lang-en').classList.remove('lang-active');
+
+                document.getElementById('mobile-lang-cn').classList.add('lang-active');
+                document.getElementById('mobile-lang-cn').classList.remove('lang-inactive');
+                document.getElementById('mobile-lang-en').classList.add('lang-inactive');
+                document.getElementById('mobile-lang-en').classList.remove('lang-active');
+            }
+        }
     </script>
 </body>
 </html>
