@@ -6,6 +6,8 @@
     <title>服务与支持 - Prorito 保锐图</title>
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Manual.js 数据文件 -->
+    <script src="Manual.js"></script>
     <!-- 字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -41,12 +43,12 @@
         <div class="w-full max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
             <!-- Logo -->
             <a href="index.html" class="text-3xl font-extrabold tracking-tight relative z-50">
-                <span class="text-tech-red">Pro</span>rito
+                <span class="text-tech-red">P</span>rorito
             </a>
 
             <!-- 桌面端菜单 -->
             <nav class="hidden lg:flex space-x-10 text-sm font-medium tracking-wide text-gray-800">
-                <a href="index.html#products" class="hover:text-tech-blue transition-colors relative group">
+                <a href="category.html" class="hover:text-tech-blue transition-colors relative group">
                     <span data-i18n="nav_products">产品系列</span>
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-blue transition-all group-hover:w-full"></span>
                 </a>
@@ -94,7 +96,7 @@
     <!-- 移动端全屏菜单 -->
     <div id="mobile-menu" class="fixed inset-0 bg-white z-40 mobile-menu-closed flex flex-col justify-center items-center pt-20">
         <nav class="flex flex-col space-y-8 text-center text-2xl font-bold text-gray-900">
-            <a href="index.html#products" class="mobile-link hover:text-tech-blue" data-i18n="mobile_nav_products">产品系列</a>
+            <a href="category.html" class="mobile-link hover:text-tech-blue" data-i18n="mobile_nav_products">产品系列</a>
             <a href="lighting-solutions.html" class="mobile-link hover:text-tech-blue" data-i18n="mobile_nav_solutions">技术方案</a>
             <a href="brand-story.html" class="mobile-link hover:text-tech-blue" data-i18n="mobile_nav_story">品牌故事</a>
             <a href="service-support.html" class="mobile-link hover:text-tech-blue" data-i18n="mobile_nav_support">服务支持</a>
@@ -115,32 +117,24 @@
     <main class="pt-24 pb-20">
 
         <!-- 页面标题 / 面包屑 -->
-        <section class="mb-10 md:mb-10">
+        <section class="mb-6 md:mb-6">
             <div class="max-w-7xl mx-auto px-6 md:px-12">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
-                        <nav class="text-xs text-gray-400 mb-1">
-                            <a href="index.html" class="hover:text-tech-blue" data-i18n="breadcrumb_home">首页</a>
-                            <span class="mx-1.5">/</span>
-                            <span data-i18n="breadcrumb_support">服务与支持</span>
-                        </nav>
                         <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-2" data-i18n="hero_title">
                             服务与支持
                         </h1>
                         <p class="text-sm md:text-base text-gray-500 max-w-2xl" data-i18n="hero_subtitle">
                             无论你正在使用 Prorito 灯具、控制系统还是软件工具，我们都希望你可以方便地获得帮助：
-                            在线支持、驱动与固件下载、移动应用，以及寄修服务信息都集中在这里。
+                            在线支持、产品说明书下载，以及寄修服务信息都集中在这里。
                         </p>
-                    </div>
-                    <div class="text-xs md:text-sm text-gray-400">
-                        服务时间、联系方式等信息可根据你的实际情况替换。
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 主体内容 -->
-        <section class="mb-14">
+        <section class="mb-8">
             <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
                 <!-- 在线支持 -->
@@ -167,7 +161,7 @@
                                 <li>· 可查看工单处理进度与历史记录</li>
                                 <li>· 适合工程项目与商用客户</li>
                             </ul>
-                            <a href="#" class="mt-auto inline-flex items-center justify-center px-3 py-2 rounded-full bg-black text-white text-[12px] font-semibold hover:bg-tech-blue transition-colors" data-i18n="submit_ticket_button">
+                            <a href="#" id="submit-ticket-btn" class="mt-auto inline-flex items-center justify-center px-3 py-2 rounded-full bg-black text-white text-[12px] font-semibold hover:bg-tech-blue transition-colors" data-i18n="submit_ticket_button">
                                 提交工单
                                 <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -184,7 +178,7 @@
                             </ul>
                             <div class="flex justify-center">
                                 <div class="w-32 h-32 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden border border-gray-200">
-                                    <img src="image/qrcode-wechat.png" alt="企业微信二维码" class="w-full h-full object-contain p-2">
+                                    <img src="image/微信二维码.jpg" alt="企业微信二维码" class="w-full h-full object-contain p-2">
                                 </div>
                             </div>
                         </div>
@@ -193,11 +187,11 @@
 
                 <!-- 小提示 -->
                 <aside class="bg-gray-900 text-gray-100 rounded-2xl p-5 md:p-6 flex flex-col">
-                    <h3 class="text-sm md:text-base font-semibold mb-2" data-i18n="problem_tips_title">加快问题定位的小提示</h3>
-                    <p class="text-[11px] md:text-xs text-gray-300 mb-3" data-i18n="problem_tips_desc">
+                    <h3 class="text-base md:text-lg font-semibold mb-2" data-i18n="problem_tips_title">加快问题定位的小提示</h3>
+                    <p class="text-xs md:text-sm text-gray-300 mb-3" data-i18n="problem_tips_desc">
                         在提交工单或邮件时，如果可以提供以下信息，将帮助我们更快定位并解决问题：
                     </p>
-                    <ul class="text-[11px] md:text-xs text-gray-300 space-y-2">
+                    <ul class="text-xs md:text-sm text-gray-300 space-y-2">
                         <li>· 产品型号、序列号（SN）</li>
                         <li>· 使用环境（演播室 / 直播间 / 户外等）</li>
                         <li>· 控制方式（DMX / App / 控制台型号）</li>
@@ -208,12 +202,12 @@
             </div>
         </section>
 
-        <!-- 驱动及固件下载 -->
-        <section class="mb-14">
+        <!-- 产品说明书下载 -->
+        <section class="mb-8">
             <div class="max-w-7xl mx-auto px-6 md:px-12">
                 <div class="flex items-center justify-between mb-4">
                     <div>
-                        <h2 class="text-lg md:text-xl font-semibold mb-1">驱动与固件下载</h2>
+                        <h2 class="text-lg md:text-xl font-semibold mb-1">产品说明书下载</h2>
                         <p class="text-xs md:text-sm text-gray-500">
                             以下为示例数据，可根据你们实际产品线填写对应文件名称、版本号和更新时间。
                         </p>
@@ -228,147 +222,29 @@
 
                 <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
                     <div class="hidden md:grid grid-cols-12 text-xs font-semibold text-gray-400 px-5 py-2 border-b border-gray-100 bg-gray-50">
-                        <div class="col-span-4">产品 / 适用型号</div>
+                        <div class="col-span-4">产品名称</div>
                         <div class="col-span-2">类型</div>
                         <div class="col-span-2">版本</div>
                         <div class="col-span-2">更新时间</div>
                         <div class="col-span-2 text-right pr-2">下载</div>
                     </div>
 
-                    <!-- 行 1 -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 px-5 py-4 border-b border-gray-100 text-xs md:text-sm items-center">
-                        <div class="md:col-span-4">
-                            <div class="font-medium text-gray-900">Prorito DMX 控制台</div>
-                            <div class="text-[11px] text-gray-500">适用型号：PX-DMX 400 / PX-DMX 800</div>
-                        </div>
-                        <div class="md:col-span-2 text-gray-600 mt-1 md:mt-0">USB 驱动</div>
-                        <div class="md:col-span-2 text-gray-600 mt-1 md:mt-0">v1.2.3</div>
-                        <div class="md:col-span-2 text-gray-500 mt-1 md:mt-0">2025-10-12</div>
-                        <div class="md:col-span-2 mt-2 md:mt-0 md:text-right">
-                            <a href="downloads/Prorito_DMX_USB_Driver_v1.2.3.zip"
-                               class="inline-flex items-center px-3 py-1.5 rounded-full bg-gray-900 text-white text-[11px] font-semibold hover:bg-tech-blue transition-colors">
-                                下载
-                                <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- 行 2 -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 px-5 py-4 border-b border-gray-100 text-xs md:text-sm items-center">
-                        <div class="md:col-span-4">
-                            <div class="font-medium text-gray-900">ST 系列演播室平板灯</div>
-                            <div class="text-[11px] text-gray-500">适用型号：ST-Panel 100 / ST-Panel 200</div>
-                        </div>
-                        <div class="md:col-span-2 text-gray-600 mt-1 md:mt-0">固件升级包</div>
-                        <div class="md:col-span-2 text-gray-600 mt-1 md:mt-0">v3.0.1</div>
-                        <div class="md:col-span-2 text-gray-500 mt-1 md:mt-0">2025-08-30</div>
-                        <div class="md:col-span-2 mt-2 md:mt-0 md:text-right">
-                            <a href="downloads/Prorito_ST_Panel_FW_v3.0.1.zip"
-                               class="inline-flex items-center px-3 py-1.5 rounded-full bg-gray-900 text-white text-[11px] font-semibold hover:bg-tech-blue transition-colors">
-                                下载
-                                <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- 行 3 -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 px-5 py-4 text-xs md:text-sm items-center">
-                        <div class="md:col-span-4">
-                            <div class="font-medium text-gray-900">P 系列全彩灯控制工具</div>
-                            <div class="text-[11px] text-gray-500">适用型号：P60 / P120 / P240</div>
-                        </div>
-                        <div class="md:col-span-2 text-gray-600 mt-1 md:mt-0">桌面控制软件</div>
-                        <div class="md:col-span-2 text-gray-600 mt-1 md:mt-0">v2.4.0</div>
-                        <div class="md:col-span-2 text-gray-500 mt-1 md:mt-0">2025-09-05</div>
-                        <div class="md:col-span-2 mt-2 md:mt-0 md:text-right">
-                            <a href="downloads/Prorito_P_Series_Control_v2.4.0.zip"
-                               class="inline-flex items-center px-3 py-1.5 rounded-full bg-gray-900 text-white text-[11px] font-semibold hover:bg-tech-blue transition-colors">
-                                下载
-                                <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
-                                </svg>
-                            </a>
-                        </div>
+                    <div id="manual-list"></div>
+                    
+                    <div id="pagination" class="flex items-center justify-end px-5 py-3 border-t border-gray-100 text-xs gap-2">
+                        <button id="prev-page" onclick="changePage(-1)" class="px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                            上一页
+                        </button>
+                        <span id="page-info" class="text-gray-600"></span>
+                        <button id="next-page" onclick="changePage(1)" class="px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                            下一页
+                        </button>
                     </div>
                 </div>
 
                 <!-- 温馨提示 -->
                 <p class="mt-3 text-[11px] md:text-xs text-gray-400">
-                    · 在升级固件前，请确认已备份当前配置，且电源稳定，避免升级过程中断电。<br>
-                    · 如对升级流程不熟悉，建议先咨询在线支持或阅读对应版本的升级说明文档。
-                </p>
-            </div>
-        </section>
-
-        <!-- 移动应用下载 -->
-        <section class="mb-14">
-            <div class="max-w-7xl mx-auto px-6 md:px-12">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <h2 class="text-lg md:text-xl font-semibold mb-1">移动端APP下载</h2>
-                        <p class="text-xs md:text-sm text-gray-500">
-                            Prorito 移动端应用可用于快速调光、场景切换、设备管理等。
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- iOS -->
-                    <article class="bg-white rounded-2xl border border-gray-100 p-5 md:p-6 flex flex-col md:flex-row items-start gap-4">
-                        <div class="w-20 h-20 rounded-2xl bg-gray-900 flex items-center justify-center text-white text-xl font-extrabold">
-                            P
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-sm md:text-base font-semibold mb-1">Prorito Control（iOS）</h3>
-                            <p class="text-xs md:text-sm text-gray-600 mb-2">
-                                支持通过蓝牙 / 网络快速连接 Prorito 灯具和控制设备，实现移动端调光、场景切换、设备分组、固件升级等操作。
-                            </p>
-                            <div class="flex flex-wrap items-center gap-3">
-                                <a href="#" class="inline-flex items-center px-3 py-1.5 rounded-full bg-black text-white text-[11px] font-semibold hover:bg-tech-blue transition-colors">
-                                    App Store 下载
-                                </a>
-                                <div class="flex items-center gap-2 text-[11px] text-gray-500">
-                                    <div class="w-14 h-14 border border-dashed border-gray-300 rounded-lg flex items-center justify-center text-[10px] text-gray-400">
-                                        QR
-                                    </div>
-                                    <span>使用手机相机扫描二维码下载</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Android -->
-                    <article class="bg-white rounded-2xl border border-gray-100 p-5 md:p-6 flex flex-col md:flex-row items-start gap-4">
-                        <div class="w-20 h-20 rounded-2xl bg-gray-900 flex items-center justify-center text-white text-xl font-extrabold">
-                            P
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-sm md:text-base font-semibold mb-1">Prorito Control（Android）</h3>
-                            <p class="text-xs md:text-sm text-gray-600 mb-2">
-                                适配主流 Android 设备，支持与 iOS 版本一致的功能，适合演播室、直播间等多终端协同使用。
-                            </p>
-                            <div class="flex flex-wrap items-center gap-3">
-                                <a href="#" class="inline-flex items-center px-3 py-1.5 rounded-full bg-black text-white text-[11px] font-semibold hover:bg-tech-blue transition-colors">
-                                    Android 应用商店
-                                </a>
-                                <div class="flex items-center gap-2 text-[11px] text-gray-500">
-                                    <div class="w-14 h-14 border border-dashed border-gray-300 rounded-lg flex items-center justify-center text-[10px] text-gray-400">
-                                        QR
-                                    </div>
-                                    <span>扫码下载或更新到最新版本</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <p class="mt-3 text-[11px] md:text-xs text-gray-400">
-                    · 请在官方应用商店或本页面提供的链接中下载应用，避免使用来源不明的安装包。<br>
-                    · 某些高级功能可能需要配合指定型号硬件使用，请参考产品说明。
+                    · 如需更多产品资料或技术支持，请联系在线支持。
                 </p>
             </div>
         </section>
@@ -447,24 +323,25 @@
     </main>
 
     <!-- 页脚 -->
-    <footer class="bg-white border-t border-gray-100 pt-20 pb-10 text-sm text-gray-600 mt-10">
+    <footer class="bg-white border-t border-gray-100 pb-10 pt-8 text-sm text-gray-600">
         <div class="max-w-7xl mx-auto px-6 md:px-12">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
                 <div class="col-span-2 lg:col-span-2">
                     <a href="index.html" class="text-3xl font-extrabold tracking-tight text-black">
-                        <span class="text-tech-red">Pro</span>rito
+                        <span class="text-tech-red">P</span>rorito
                     </a>
-                    <p class="mt-4 text-gray-500 max-w-xs leading-relaxed">
-                        我们致力于为全球电影制作人提供可靠、专业的拍摄装备。
+                    <p class="mt-4 text-gray-500 max-w-xs leading-relaxed" data-i18n="footer_desc">
+                        我们致力于为全球创作者提供最可靠的拍摄设备与布光方案。从个人创作到专业演播，始终如一。
                     </p>
                 </div>
                 <div>
                     <h4 class="font-bold text-black mb-4" data-i18n="footer_products">产品系列</h4>
                     <ul class="space-y-3">
                         <li><a href="category.html?category=studio" class="hover:text-tech-blue transition-colors" data-i18n="cat_studio_lighting">演播室灯光</a></li>
-                        <li><a href="category.html?category=st" class="hover:text-tech-blue transition-colors" data-i18n="cat_st_series">ST系列影视灯</a></li>
-                        <li><a href="category.html?category=p" class="hover:text-tech-blue transition-colors" data-i18n="cat_p_series">P系列全彩灯</a></li>
+                        <li><a href="category.html?category=meeting" class="hover:text-tech-blue transition-colors">会议室灯光</a></li>
+                        <li><a href="category.html?category=film" class="hover:text-tech-blue transition-colors">专业影视灯光</a></li>
                         <li><a href="category.html?category=control" class="hover:text-tech-blue transition-colors" data-i18n="cat_control_accessories">控制与配件</a></li>
+                        <li><a href="category.html?category=matrix" class="hover:text-tech-blue transition-colors">矩阵灯/太空灯</a></li>
                     </ul>
                 </div>
                 <div>
@@ -497,6 +374,122 @@
 
     <!-- 滚动时给导航加阴影和语言切换功能 -->
     <script>
+        let currentPage = 1;
+        const itemsPerPage = 8;
+
+        // 下载多个文件
+        function downloadMultipleFiles(files) {
+            files.forEach((file, index) => {
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = file;
+                    link.download = '';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }, index * 500);
+            });
+        }
+
+        // 渲染产品说明书列表
+        function renderManualList() {
+            const manualList = document.getElementById('manual-list');
+            if (!manualList || typeof manualData === 'undefined') {
+                console.error('无法找到 manual-list 元素或 manualData 数据');
+                return;
+            }
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const currentPageData = manualData.slice(startIndex, endIndex);
+
+            let html = '';
+            for (let i = 0; i < itemsPerPage; i++) {
+                const item = currentPageData[i];
+                const actualIndex = startIndex + i;
+                const isLast = i === itemsPerPage - 1;
+                const borderClass = isLast ? '' : 'border-b border-gray-100';
+                
+                if (item) {
+                    const filesJson = JSON.stringify(item.files).replace(/"/g, '&quot;');
+                    html += `
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 px-5 py-4 ${borderClass} text-xs md:text-sm items-center min-h-[60px]">
+                            <div class="md:col-span-4">
+                                <div class="font-medium text-gray-900">${item.name}</div>
+                            </div>
+                            <div class="md:col-span-2 text-gray-600 mt-1 md:mt-0">${item.type}</div>
+                            <div class="md:col-span-2 text-gray-600 mt-1 md:mt-0">${item.version}</div>
+                            <div class="md:col-span-2 text-gray-500 mt-1 md:mt-0">${item.updateTime}</div>
+                            <div class="md:col-span-2 mt-2 md:mt-0 md:text-right">
+                                <button onclick="downloadMultipleFiles(${filesJson})"
+                                        class="inline-flex items-center px-3 py-1.5 rounded-full bg-gray-900 text-white text-[11px] font-semibold hover:bg-tech-blue transition-colors">
+                                    下载
+                                    <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 px-5 py-4 ${borderClass} text-xs md:text-sm items-center min-h-[60px]">
+                            <div class="md:col-span-4">
+                                <div class="font-medium text-gray-400">&nbsp;</div>
+                            </div>
+                            <div class="md:col-span-2 text-gray-400 mt-1 md:mt-0">&nbsp;</div>
+                            <div class="md:col-span-2 text-gray-400 mt-1 md:mt-0">&nbsp;</div>
+                            <div class="md:col-span-2 text-gray-400 mt-1 md:mt-0">&nbsp;</div>
+                            <div class="md:col-span-2 mt-2 md:mt-0 md:text-right">
+                                <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-transparent text-transparent text-[11px] font-semibold">
+                                    下载
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            manualList.innerHTML = html;
+            updatePagination();
+        }
+
+        // 更新分页信息
+        function updatePagination() {
+            const totalPages = Math.ceil(manualData.length / itemsPerPage);
+            const pageInfo = document.getElementById('page-info');
+            const prevBtn = document.getElementById('prev-page');
+            const nextBtn = document.getElementById('next-page');
+
+            if (pageInfo) {
+                pageInfo.textContent = `${currentPage} / ${totalPages}`;
+            }
+
+            if (prevBtn) {
+                prevBtn.disabled = currentPage === 1;
+            }
+
+            if (nextBtn) {
+                nextBtn.disabled = currentPage === totalPages;
+            }
+        }
+
+        // 切换页面
+        function changePage(delta) {
+            const totalPages = Math.ceil(manualData.length / itemsPerPage);
+            const newPage = currentPage + delta;
+
+            if (newPage >= 1 && newPage <= totalPages) {
+                currentPage = newPage;
+                renderManualList();
+            }
+        }
+
+        // 页面加载完成后渲染产品说明书列表
+        document.addEventListener('DOMContentLoaded', function() {
+            renderManualList();
+        });
+
         // 导航栏滚动效果
         const nav = document.getElementById('top-nav');
         window.addEventListener('scroll', () => {
@@ -557,7 +550,7 @@
                 "breadcrumb_home": { "cn": "首页", "en": "Home" },
                 "breadcrumb_support": { "cn": "服务与支持", "en": "Service & Support" },
                 "hero_title": { "cn": "服务与支持", "en": "Service & Support" },
-                "hero_subtitle": { "cn": "无论你正在使用 Prorito 灯具、控制系统还是软件工具，我们都希望你可以方便地获得帮助：在线支持、驱动与固件下载、移动应用，以及寄修服务信息都集中在这里。", "en": "Whether you're using Prorito lights, control systems or software tools, we want you to get help easily: online support, driver and firmware downloads, mobile apps, and repair service information are all here." },
+                "hero_subtitle": { "cn": "无论你正在使用 Prorito 灯具、控制系统还是软件工具，我们都希望你可以方便地获得帮助：在线支持、产品说明书下载，以及寄修服务信息都集中在这里。", "en": "Whether you're using Prorito lights, control systems or software tools, we want you to get help easily: online support, product manual downloads, and repair service information are all here." },
                 "online_support_title": { "cn": "在线支持", "en": "Online Support" },
                 "recommended_method": { "cn": "推荐优先方式", "en": "Recommended Method" },
                 "online_support_desc": { "cn": "如果你在使用产品过程中遇到任何问题（例如：灯具异常、控制系统配置、固件升级、方案咨询等），建议优先通过在线支持渠道联系我们，方便我们记录和追踪问题进度。", "en": "If you encounter any problems during product use (such as: light abnormalities, control system configuration, firmware upgrade, scheme consultation, etc.), it is recommended to contact us through online support channels first, so that we can record and track the progress of the problem." },
@@ -643,6 +636,23 @@
         menuLinks.forEach(link => {
             link.addEventListener('click', toggleMenu);
         });
+
+        // 提交工单按钮点击事件
+        const submitTicketBtn = document.getElementById('submit-ticket-btn');
+        if (submitTicketBtn) {
+            submitTicketBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const message = document.createElement('div');
+                message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/80 text-white px-6 py-4 rounded-3xl shadow-2xl z-[9999] text-center text-base font-medium';
+                message.textContent = '暂无工单表格，请直接联系微信';
+                document.body.appendChild(message);
+                
+                setTimeout(() => {
+                    message.remove();
+                }, 2000);
+            });
+        }
     </script>
 </body>
 </html>
