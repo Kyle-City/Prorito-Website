@@ -853,7 +853,7 @@ const productData = [
       { name: "LED光源", value: "1360颗（WW暖白+CW冷白灯珠)" },
       { name: "灯光照度", value: "3799Lux@1m/5600K 120°；3615Lux@1m/3200K 120°" },
       { name: "光束角度", value: "120°" },
-      { name: "色温范围", value: "3200K～5600K无级可调色温" },
+      { name: "色温范围", value: "5600K/2700k ~ 6500k 可选" },
       { name: "显色指数", value: "Ra≥97" },
       { name: "影视照明一致性指数", value: "TLCI≥ 98" },
       { name: "颜色质量", value: "CQS≥96" },
@@ -2334,6 +2334,44 @@ const productData = [
       { name: "拼接方格", value: "550mm×550mm" },
       { name: "特点", value: "拼装式葡萄架，免现场焊接，避免因焊接产生的火花，安装省心安全。可定制电源输入/输出接口；DMX信号输入/输出接口；" },
       { name: "作用", value: "舞台灯光、演播室灯光挂装使用。" }
+    ],
+    description: "描述待填写"
+  },
+  {
+    category: "矩阵灯太空灯",
+    subCategory: "四头灯太空灯",
+    id: 72,
+    name: "6头矩阵影视灯/太空灯",
+    ModelName: "Prt-DT6-1200W",
+    image: [
+      "image/矩阵灯太空灯/四头灯太空灯/6头太空灯1.jpg",
+      "image/矩阵灯太空灯/四头灯太空灯/6头太空灯2.jpg",
+      "image/矩阵灯太空灯/四头灯太空灯/6头太空灯3.jpg"
+    ],
+    params: [
+      { name: "额定功率", value: "1200W" },
+      { name: "模块数量", value: "6灯头" },
+      { name: "色温", value: "2600K-6000K线性可调" },
+      { name: "显色指数", value: "CRI≥96" },
+      { name: "影视灯光一致性指数", value: "TLCI≥98" },
+      { name: "颜色一致性指数", value: "CCI=0" },
+      { name: "出光角度", value: "60°" },
+      { name: "灯珠寿命", value: "约50000小时" },
+      { name: "调光范围", value: "0～100% /万分级调光" },
+      { name: "光学系统", value: "0～100%线性调光" },
+      { name: "控制模式", value: "灯体/DMX512/无线DMX512" },
+      { name: "信号通道数", value: "5CH～17CH" },
+      { name: "信号连接", value: "DMX IN / DMX OUT" },
+      { name: "数码显示", value: "LCD液晶屏显示" },
+      { name: "分区控制", value: "八域控制" },
+      { name: "散热方式", value: "主动散热" },
+      { name: "外壳材质", value: "铝合金" },
+      { name: "输入电压", value: "100V～240V AC/50～60Hz" },
+      { name: "电源连接", value: "POWER IN" },
+      { name: "防护等级", value: "IP23" },
+      { name: "工作温度", value: "-20~50℃" },
+      { name: "灯体重量", value: "22.89kg" },
+      { name: "规格尺寸", value: "780mm×780mm×180mm" }
     ],
     description: "描述待填写"
   }
